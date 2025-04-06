@@ -32,7 +32,7 @@ const stars = document.querySelector('.starRating');
 const reviewSection = document.querySelector('.reviews');
 
 // Render Reviews Function; with the given parameters to display the proper information inside the form
-const renderReviews = async ({username, image, rating, review}) => {
+const renderReviews = async ({username, image, star, review}) => {
   // Creating a div element called with the class name 'review_container'
   const reviewContainer = document.createElement('div');
   reviewContainer.classList.add('review_container');
@@ -50,11 +50,11 @@ const renderReviews = async ({username, image, rating, review}) => {
 
   // Creating a p element for rating to display the rating parameters text
   const ratingP = document.createElement('p');
-  ratingP.textContent = rating;
+  ratingP.textContent = star;
 
   // Creating a p element for review to display that parameters text
   const reviewP = document.createElement('p');
-  ratingP.textContent = review;
+  reviewP.textContent = review;
 
   // Applying the content from the p tags to the content div
   contentDiv.appendChild(usernameP);
@@ -79,11 +79,21 @@ form.addEventListener('submit', (event) => {
   // Taking the values that were inputted inside the form and storing them
   const username = form.elements['username'].value; 
   const image = form.elements['image'].value;
-  const rating = Number(form.elements['star'].value);
+  const star = Number(form.elements['star'].value);
   const review = form.elements['review'].value;
 
   // adding the review's data from the users inputs
-  const newReview = { username, image, rating, review };
-  review.push(newReview);
+  const newReview = { username, image, star, review };
+  reviews.push(newReview);
   renderReviews(newReview);
+  updatedAverageRating();
+  form.reset(); // resetting the form after the inputs have been submitted
 });
+
+// Upadted Average Rating function
+const updatedAverageRating = () => {
+  const average = calculateStarAverage(reviews);
+  stars.textContent = `Star Rating: ${average.toFixed(1)}`;
+}
+
+updatedAverageRating();
