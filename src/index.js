@@ -1,3 +1,5 @@
+import { calculateStarAverage } from "./logic.js";
+
 //Do not change //////////////////////////////////
 const reviews = [
   {
@@ -23,3 +25,30 @@ const reviews = [
 /////////////////////////////////////////////////////////////////////
 
 //Your Code Below Here////
+
+// Render Reviews Function; with the given parameters to display the proper information inside the form
+const renderReviews = async ({username, image, rating, review}) => {
+  // Creating a div element called with the class name 'review_container'
+  const reviewContainer = document.createElement('div');
+  reviewContainer.classList.add('review_container');
+
+  // Creating an img element that passes the image parameter inside the src to be able to render the image
+  const img = document.createElement('img');
+  img.src = image;
+
+  // Creating another div to display the content inside of that div.
+  const contentDiv = document.createElement('div');
+
+  // Creating a p element for username, then using that username parameter to display text within the p tag
+  const usernameP = document.createElement('p');
+  usernameP.textContent = username;
+
+  // Creating a p element for rating to display the rating parameters text
+  const ratingP = document.createElement('p');
+  ratingP.textContent = rating;
+
+  // Creating a p element for review to display that parameters text
+  const reviewP = document.createElement('p');
+  ratingP.textContent = rating;
+
+}
