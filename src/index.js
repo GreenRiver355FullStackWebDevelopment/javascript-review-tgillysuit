@@ -26,6 +26,11 @@ const reviews = [
 
 //Your Code Below Here////
 
+// Created some other DOM elements
+const form = document.querySelector('form');
+const stars = document.querySelector('.starRating');
+const reviewSection = document.querySelector('.reviews');
+
 // Render Reviews Function; with the given parameters to display the proper information inside the form
 const renderReviews = async ({username, image, rating, review}) => {
   // Creating a div element called with the class name 'review_container'
@@ -49,6 +54,17 @@ const renderReviews = async ({username, image, rating, review}) => {
 
   // Creating a p element for review to display that parameters text
   const reviewP = document.createElement('p');
-  ratingP.textContent = rating;
+  ratingP.textContent = review;
 
+  // Applying the content from the p tags to the content div
+  contentDiv.appendChild(usernameP);
+  contentDiv.appendChild(ratingP);
+  contentDiv.appendChild(reviewP);
+
+  // Applying the image and the content div to the review container
+  reviewContainer.appendChild(img);
+  reviewContainer.appendChild(contentDiv);
+
+  // Applying the review container to the reviews section of the html
+  reviewSection.appendChild(reviewContainer)
 }
