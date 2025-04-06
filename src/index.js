@@ -76,5 +76,14 @@ reviews.forEach(renderReviews);
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  
+  // Taking the values that were inputted inside the form and storing them
+  const username = form.elements['username'].value; 
+  const image = form.elements['image'].value;
+  const rating = Number(form.elements['star'].value);
+  const review = form.elements['review'].value;
+
+  // adding the review's data from the users inputs
+  const newReview = { username, image, rating, review };
+  review.push(newReview);
+  renderReviews(newReview);
 });
