@@ -68,3 +68,13 @@ const renderReviews = async ({username, image, rating, review}) => {
   // Applying the review container to the reviews section of the html
   reviewSection.appendChild(reviewContainer)
 }
+
+// Iterating through the review and appending 
+reviews.forEach(renderReviews);
+
+// The Form Handle function
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  
+});
